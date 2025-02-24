@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Prediction</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function predictDiabetes(event) {
+            event.preventDefault();
+            let age = document.getElementById('age').value;
+            let bmi = document.getElementById('bmi').value;
+            let glucose = document.getElementById('glucose').value;
+            let bloodPressure = document.getElementById('bloodPressure').value;
+            let insulin = document.getElementById('insulin').value;
+            if (glucose > 140 || bmi > 30 || bloodPressure > 130) {
+            document.getElementById('result').innerText = "HIGH RISK: You may have diabetes. Please consult a doctor.";
+        }
+         else if (glucose > 100 || bmi > 25 || bloodPressure > 120) {
+            document.getElementById('result').innerText = "MODERATE RISK: Monitor your health and maintain a healthy lifestyle.";
+        }
+        else if (glucose == 100 && bmi == 25 && bloodPressure == 120) {
+            document.getElementById('result').innerText = "NO DIABETES: Your levels are perfectly balanced.";
+        } 
+        else {
+            document.getElementById('result').innerText = "LOW RISK: Your diabetes risk appears to be low.";
+       }
+}
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <h1><u>Diabetes Risk Prediction</h1></u>
+        <form id="diabetesForm" onsubmit="predictDiabetes(event)">
+            <label for="age"><u>AGE:</u></label>
+            <input type="number" id="age" name="age" required>
+            <label for="bmi"><u>BMI:</u></label>
+        <input type="number" id="bmi" name="bmi" step="0.1" required>
+
+        <label for="glucose"><u>Glucose Level:</u></label>
+        <input type="number" id="glucose" name="glucose" required>
+
+        <label for="bloodPressure"><u>Blood Pressure:</u></label>
+        <input type="number" id="bloodPressure" name="bloodPressure" required>
+
+        <label for="insulin"><u>Insulin Level:</u></label>
+        <input type="number" id="insulin" name="insulin">
+
+        <button type="submit">Predict Risk</button>
+    </form>
+    <p id="result"></p>
+</div>
+
+</body>
+</html>
